@@ -5,7 +5,9 @@ import java.time.Duration;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
 
 public class TestBase 
 {
@@ -18,7 +20,10 @@ public class TestBase
 		
 		if(strBowser.equalsIgnoreCase("chrome"))
 		{
-			driver = new ChromeDriver();
+			ChromeOptions options = new ChromeOptions();
+			options.addArguments("--incognito");			
+			driver = new ChromeDriver(options);
+
 		}
 		else if(strBowser.equalsIgnoreCase("edge"))
 		{
@@ -27,6 +32,7 @@ public class TestBase
 		
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+		driver.manage().deleteAllCookies();
 	}
 	
 	
