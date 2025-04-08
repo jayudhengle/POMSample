@@ -48,5 +48,4 @@ public class TestBase {
 		}
 		testBase = null;
 	}
-
 }
